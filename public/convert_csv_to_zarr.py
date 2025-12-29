@@ -21,10 +21,10 @@ def convert_csv_to_zarr():
     root = zarr.open_group(store, mode='w')
     
     time_strings = df['time'].values.astype(str)
-    root.create_array('time', data=time_strings, dtype=str)
+    root.create_array('time', data=time_strings)
     
     tide_values = df['tide_m'].values.astype(np.float64)
-    root.create_array('tide_m', data=tide_values, dtype=np.float64)
+    root.create_array('tide_m', data=tide_values)
     
     print(f"\nZarr store created at: {zarr_path}")
     print("Arrays created: 'time', 'tide_m'")
