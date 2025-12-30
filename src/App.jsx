@@ -31,7 +31,12 @@ function App() {
         const timeDecompressed = fzstd.decompress(timeCompressed)
         const tideDecompressed = fzstd.decompress(tideCompressed)
         
-        const tideValues = new Float64Array(tideDecompressed.buffer)
+        const tideView = new DataView(tideDecompressed.buffer, tideDecompressed.byteOffset, tideDecompressed.byteLength)
+        const numTideValues = tideMeta.shape[0]
+        const tideValues = []
+        for (let i = 0; i < numTideValues; i++) {
+          tideValues.push(tideView.getFloat64(i * 8, true))
+        }
         
         const dtype = timeMeta.data_type
         let charLength = 19
@@ -40,7 +45,7 @@ function App() {
         }
         
         const timeStrings = []
-        const view = new DataView(timeDecompressed.buffer)
+        const view = new DataView(timeDecompressed.buffer, timeDecompressed.byteOffset, timeDecompressed.byteLength)
         const numStrings = timeMeta.shape[0]
         
         for (let i = 0; i < numStrings; i++) {
