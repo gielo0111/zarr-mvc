@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import * as fzstd from 'fzstd'
 
 function App() {
   const [data, setData] = useState(null)
@@ -10,19 +11,55 @@ function App() {
       try {
         setLoading(true)
         
-        const timeResponse = await fetch('/tide_data.zarr/time/c/0')
-        const tideResponse = await fetch('/tide_data.zarr/tide_m/c/0')
+        const [timeMetaRes, tideMetaRes, timeChunkRes, tideChunkRes] = await Promise.all([
+          fetch('/tide_data.zarr/time/zarr.json'),
+          fetch('/tide_data.zarr/tide_m/zarr.json'),
+          fetch('/tide_data.zarr/time/c/0'),
+          fetch('/tide_data.zarr/tide_m/c/0')
+        ])
         
-        if (!timeResponse.ok || !tideResponse.ok) {
+        if (!timeChunkRes.ok || !tideChunkRes.ok) {
           throw new Error('Failed to fetch Zarr data')
         }
         
-        const timeData = await timeResponse.json()
-        const tideData = await tideResponse.json()
+        const timeMeta = await timeMetaRes.json()
+        const tideMeta = await tideMetaRes.json()
         
-        const combinedData = timeData.map((time, index) => ({
+        const timeCompressed = new Uint8Array(await timeChunkRes.arrayBuffer())
+        const tideCompressed = new Uint8Array(await tideChunkRes.arrayBuffer())
+        
+        const timeDecompressed = fzstd.decompress(timeCompressed)
+        const tideDecompressed = fzstd.decompress(tideCompressed)
+        
+        const tideValues = new Float64Array(tideDecompressed.buffer)
+        
+        const dtype = timeMeta.data_type
+        let charLength = 19
+        if (dtype?.configuration?.length_bytes) {
+          charLength = dtype.configuration.length_bytes / 4
+        }
+        
+        const timeStrings = []
+        const view = new DataView(timeDecompressed.buffer)
+        const numStrings = timeMeta.shape[0]
+        
+        for (let i = 0; i < numStrings; i++) {
+          let str = ''
+          for (let j = 0; j < charLength; j++) {
+            const offset = (i * charLength + j) * 4
+            if (offset + 4 <= timeDecompressed.length) {
+              const codePoint = view.getUint32(offset, true)
+              if (codePoint !== 0) {
+                str += String.fromCodePoint(codePoint)
+              }
+            }
+          }
+          timeStrings.push(str.trim())
+        }
+        
+        const combinedData = timeStrings.map((time, index) => ({
           time: time,
-          tide_m: tideData[index]
+          tide_m: tideValues[index]
         }))
         
         setData(combinedData)
@@ -77,11 +114,11 @@ function App() {
       </table>
       
       <div className="info">
-        Data loaded from Zarr format. Check the <code>/public</code> folder for:
+        Data loaded from <strong>Zstd-compressed</strong> Zarr format. Check the <code>/public</code> folder for:
         <ul style={{ marginTop: '10px', marginLeft: '20px' }}>
           <li><code>tide_data.csv</code> - Original CSV file</li>
           <li><code>convert_csv_to_zarr.py</code> - Python conversion script</li>
-          <li><code>tide_data.zarr/</code> - Zarr directory</li>
+          <li><code>tide_data.zarr/</code> - Zarr directory (with Zstd compression)</li>
         </ul>
       </div>
     </div>
