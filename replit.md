@@ -1,55 +1,51 @@
-# Tide Data Zarr Viewer
+# Tide Data Zarr Viewer - Proof of Concept
 
 ## Overview
+A React + Vite proof of concept that demonstrates reading and displaying tide data from Zarr format in a web browser.
 
-This is a React-based web application for viewing tide data stored in Zarr format. The application reads scientific array data (time series of tide measurements) from a Zarr store and displays it in a browser interface. It serves as a demonstration of using the Zarrita JavaScript library to work with Zarr v3 format data in a web context.
+## Project Structure
+```
+├── index.html              # Entry HTML file
+├── vite.config.js          # Vite configuration
+├── src/
+│   ├── main.jsx           # React entry point
+│   ├── App.jsx            # Main component - loads and displays Zarr data
+│   └── index.css          # Styles
+└── public/
+    ├── tide_data.csv      # Original CSV data
+    ├── convert_csv_to_zarr.py  # Python conversion script
+    └── tide_data.zarr/    # Zarr directory
+        ├── zarr.json      # Root metadata
+        ├── time/          # Time array
+        │   ├── zarr.json
+        │   └── c/0        # Chunk data (JSON)
+        └── tide_m/        # Tide measurement array
+            ├── zarr.json
+            └── c/0        # Chunk data (JSON)
+```
 
-## User Preferences
+## How It Works
+1. **CSV to Zarr Conversion**: The Python script `convert_csv_to_zarr.py` reads `tide_data.csv` and creates a Zarr v3 store with JSON-encoded chunks for browser compatibility.
 
-Preferred communication style: Simple, everyday language.
+2. **Data Loading**: The React app fetches the chunk files directly from `/tide_data.zarr/*/c/0` and parses them as JSON.
 
-## System Architecture
+3. **Display**: The data is rendered in a styled table showing time and tide measurements.
 
-### Frontend Architecture
-- **Framework**: React 19 with Vite 7 as the build tool and dev server
-- **Purpose**: Single-page application that fetches and displays Zarr-formatted tide data
-- **Entry Point**: `src/main.jsx` bootstraps the React app into `index.html`
-- **Styling**: Plain CSS in `src/index.css` with a clean, minimal design
+## Running the Project
+```bash
+npm run dev
+```
 
-### Data Layer
-- **Format**: Zarr v3 format for storing multidimensional array data
-- **Library**: Zarrita (JavaScript Zarr implementation) for reading Zarr stores in the browser
-- **Data Structure**: 
-  - `time` array: Fixed-length UTF-32 encoded datetime strings
-  - `tide_m` array: Float64 tide measurements in meters
-- **Storage**: Static Zarr store served from the `public/` directory
+## Regenerating Zarr Data
+If you modify the CSV file, run:
+```bash
+cd public && python convert_csv_to_zarr.py
+```
 
-### Data Pipeline
-- **Source**: CSV file (`tide_data.csv`) containing time and tide measurements
-- **Conversion**: Python script (`convert_csv_to_zarr.py`) transforms CSV to Zarr format using pandas and the zarr Python library
-- **Serving**: Vite serves the Zarr directory as static files, allowing the browser to fetch chunks via HTTP
+## Technical Notes
+- Zarr chunks are stored as JSON for browser compatibility (browsers cannot decompress Zstd)
+- The zarrita npm package is installed but not used in the final implementation due to URL handling issues
+- Server runs on port 5000
 
-### Build Configuration
-- Vite configured to run on host `0.0.0.0` port `5000` for Replit compatibility
-- React plugin enabled for JSX transformation and fast refresh
-
-## External Dependencies
-
-### JavaScript Dependencies
-| Package | Purpose |
-|---------|---------|
-| `react` / `react-dom` | UI framework |
-| `vite` | Development server and build tool |
-| `@vitejs/plugin-react` | React integration for Vite |
-| `zarrita` | JavaScript library for reading Zarr v3 format |
-
-### Python Dependencies (for data conversion)
-| Package | Purpose |
-|---------|---------|
-| `pandas` | CSV reading and data manipulation |
-| `zarr` | Creating Zarr stores |
-| `numpy` | Numerical array operations |
-
-### Data Format
-- **Zarr v3**: Chunk-based array storage format using zstd compression
-- **Codecs**: Little-endian byte encoding with zstd compression (level 0)
+## Recent Changes
+- 2025-12-30: Initial implementation with CSV, Python conversion script, and React viewer
