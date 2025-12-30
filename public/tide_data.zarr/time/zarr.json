@@ -1,13 +1,10 @@
 {
+  "zarr_format": 3,
+  "node_type": "array",
   "shape": [
     3
   ],
-  "data_type": {
-    "name": "fixed_length_utf32",
-    "configuration": {
-      "length_bytes": 76
-    }
-  },
+  "data_type": "string",
   "chunk_grid": {
     "name": "regular",
     "configuration": {
@@ -22,24 +19,11 @@
       "separator": "/"
     }
   },
-  "fill_value": "",
   "codecs": [
     {
-      "name": "bytes",
-      "configuration": {
-        "endian": "little"
-      }
-    },
-    {
-      "name": "zstd",
-      "configuration": {
-        "level": 0,
-        "checksum": false
-      }
+      "name": "json"
     }
   ],
-  "attributes": {},
-  "zarr_format": 3,
-  "node_type": "array",
-  "storage_transformers": []
+  "fill_value": "",
+  "attributes": {}
 }

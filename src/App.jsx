@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import * as zarr from 'zarrita'
 
 function App() {
   const [data, setData] = useState(null)
@@ -11,18 +10,19 @@ function App() {
       try {
         setLoading(true)
         
-        const store = new zarr.FetchStore('/tide_data.zarr')
-        const root = await zarr.open(store, { kind: 'group' })
+        const timeResponse = await fetch('/tide_data.zarr/time/c/0')
+        const tideResponse = await fetch('/tide_data.zarr/tide_m/c/0')
         
-        const timeArray = await zarr.open(root.resolve('time'), { kind: 'array' })
-        const tideArray = await zarr.open(root.resolve('tide_m'), { kind: 'array' })
+        if (!timeResponse.ok || !tideResponse.ok) {
+          throw new Error('Failed to fetch Zarr data')
+        }
         
-        const timeData = await zarr.get(timeArray)
-        const tideData = await zarr.get(tideArray)
+        const timeData = await timeResponse.json()
+        const tideData = await tideResponse.json()
         
-        const combinedData = timeData.data.map((time, index) => ({
+        const combinedData = timeData.map((time, index) => ({
           time: time,
-          tide_m: tideData.data[index]
+          tide_m: tideData[index]
         }))
         
         setData(combinedData)
