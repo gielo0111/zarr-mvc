@@ -13,6 +13,7 @@
   "dependencies": {
     "@vitejs/plugin-react": "^5.1.2",
     "fzstd": "^0.1.1",
+    "numcodecs": "^0.3.2",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "vite": "^7.3.0",
