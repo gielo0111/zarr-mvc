@@ -21,8 +21,8 @@ function App() {
         const timeData = await zarr.get(timeArray)
         const tideData = await zarr.get(tideArray)
         
-        const combinedData = Array.from(timeData.data).map((time, index) => ({
-          time: time,
+        const combinedData = Array.from(timeData.data).map((timestamp, index) => ({
+          time: new Date(Number(timestamp)).toISOString().replace('T', ' ').slice(0, 19),
           tide_m: tideData.data[index]
         }))
         

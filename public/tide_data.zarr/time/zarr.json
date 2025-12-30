@@ -2,12 +2,7 @@
   "shape": [
     3
   ],
-  "data_type": {
-    "name": "fixed_length_utf32",
-    "configuration": {
-      "length_bytes": 76
-    }
-  },
+  "data_type": "int64",
   "chunk_grid": {
     "name": "regular",
     "configuration": {
@@ -22,7 +17,7 @@
       "separator": "/"
     }
   },
-  "fill_value": "",
+  "fill_value": 0,
   "codecs": [
     {
       "name": "bytes",

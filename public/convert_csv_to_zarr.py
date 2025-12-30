@@ -24,14 +24,15 @@ def convert_csv_to_zarr():
     store = zarr.storage.LocalStore(zarr_path)
     root = zarr.open_group(store, mode='w')
     
-    time_strings = df['time'].values.astype(str)
-    root.create_array('time', data=time_strings)
+    timestamps = pd.to_datetime(df['time'])
+    unix_timestamps = (timestamps.astype('int64') // 10**6).values
+    root.create_array('time', data=unix_timestamps)
     
     tide_values = df['tide_m'].values.astype(np.float64)
     root.create_array('tide_m', data=tide_values)
     
     print(f"\nZarr store created at: {zarr_path}")
-    print("Arrays created: 'time' (with Zstd compression), 'tide_m' (with Zstd compression)")
+    print("Arrays created: 'time' (int64 Unix ms), 'tide_m' (float64)")
     
     root_check = zarr.open_group(store, mode='r')
     print("\nVerification:")
