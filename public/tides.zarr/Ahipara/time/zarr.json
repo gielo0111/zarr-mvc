@@ -28,7 +28,7 @@
     {
       "name": "zstd",
       "configuration": {
-        "level": 0,
+        "level": 3,
         "checksum": false
       }
     }

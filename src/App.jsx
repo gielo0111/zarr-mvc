@@ -1,57 +1,93 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import * as zarr from 'zarrita'
 
 function App() {
-  const [data, setData] = useState(null)
+  const [locations, setLocations] = useState([])
+  const [selectedLocation, setSelectedLocation] = useState(null)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [tideData, setTideData] = useState(null)
   const [loading, setLoading] = useState(true)
+  const [dataLoading, setDataLoading] = useState(false)
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    async function loadZarrData() {
+    async function loadLocations() {
       try {
-        setLoading(true)
-        
-        const storeUrl = window.location.origin + '/tide_data.zarr'
-        const store = new zarr.FetchStore(storeUrl)
-        const root = zarr.root(store)
-        
-        const timeArray = await zarr.open.v3(root.resolve('time'), { kind: 'array' })
-        const tideArray = await zarr.open.v3(root.resolve('tide_m'), { kind: 'array' })
-        
-        const timeData = await zarr.get(timeArray)
-        const tideData = await zarr.get(tideArray)
-        
-        const combinedData = Array.from(timeData.data).map((timestamp, index) => ({
-          time: new Date(Number(timestamp)).toISOString().replace('T', ' ').slice(0, 19),
-          tide_m: tideData.data[index]
-        }))
-        
-        setData(combinedData)
+        const response = await fetch('/locations.json')
+        const locs = await response.json()
+        setLocations(locs)
         setLoading(false)
       } catch (err) {
-        console.error('Error loading Zarr data:', err)
-        console.error('Error stack:', err.stack)
-        setError(err.message || String(err))
+        console.error('Error loading locations:', err)
+        setError('Failed to load locations')
         setLoading(false)
       }
     }
-
-    loadZarrData()
+    loadLocations()
   }, [])
+
+  const filteredLocations = useMemo(() => {
+    if (!searchQuery.trim()) return locations
+    const query = searchQuery.toLowerCase().replace(/_/g, ' ')
+    return locations.filter(loc => 
+      loc.toLowerCase().replace(/_/g, ' ').includes(query)
+    )
+  }, [locations, searchQuery])
+
+  async function loadTideData(location) {
+    try {
+      setDataLoading(true)
+      setSelectedLocation(location)
+      setTideData(null)
+      
+      const storeUrl = window.location.origin + '/tides.zarr'
+      const store = new zarr.FetchStore(storeUrl)
+      const root = zarr.root(store)
+      
+      const timeArray = await zarr.open.v3(root.resolve(`${location}/time`), { kind: 'array' })
+      const tideArray = await zarr.open.v3(root.resolve(`${location}/tide_m`), { kind: 'array' })
+      
+      const timeData = await zarr.get(timeArray)
+      const tideValues = await zarr.get(tideArray)
+      
+      const now = Date.now()
+      const twoWeeksMs = 14 * 24 * 60 * 60 * 1000
+      const endTime = now + twoWeeksMs
+      
+      const filteredData = []
+      for (let i = 0; i < timeData.data.length; i++) {
+        const timestamp = Number(timeData.data[i])
+        if (timestamp >= now && timestamp <= endTime) {
+          filteredData.push({
+            time: new Date(timestamp).toLocaleString(),
+            timestamp: timestamp,
+            tide_m: tideValues.data[i]
+          })
+        }
+      }
+      
+      setTideData(filteredData)
+      setDataLoading(false)
+    } catch (err) {
+      console.error('Error loading tide data:', err)
+      setError(`Failed to load data for ${location}`)
+      setDataLoading(false)
+    }
+  }
 
   if (loading) {
     return (
       <div className="container">
-        <h1>Tide Data Zarr Viewer</h1>
-        <div className="loading">Loading Zarr data...</div>
+        <h1>Tide Data Viewer</h1>
+        <div className="loading">Loading locations...</div>
       </div>
     )
   }
 
-  if (error) {
+  if (error && !selectedLocation) {
     return (
       <div className="container">
-        <h1>Tide Data Zarr Viewer</h1>
+        <h1>Tide Data Viewer</h1>
         <div className="error">Error: {error}</div>
       </div>
     )
@@ -59,33 +95,89 @@ function App() {
 
   return (
     <div className="container">
-      <h1>Tide Data Zarr Viewer</h1>
+      <h1>Tide Data Viewer</h1>
       
-      <table>
-        <thead>
-          <tr>
-            <th>Time</th>
-            <th>Tide (m)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data && data.map((row, index) => (
-            <tr key={index}>
-              <td>{row.time}</td>
-              <td>{row.tide_m.toFixed(2)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-      
-      <div className="info">
-        Data loaded from <strong>Zstd-compressed</strong> Zarr format using <code>zarrita.js</code>. Check the <code>/public</code> folder for:
-        <ul style={{ marginTop: '10px', marginLeft: '20px' }}>
-          <li><code>tide_data.csv</code> - Original CSV file</li>
-          <li><code>convert_csv_to_zarr.py</code> - Python conversion script</li>
-          <li><code>tide_data.zarr/</code> - Zarr directory (with Zstd compression)</li>
-        </ul>
+      <div className="search-section">
+        <input
+          type="text"
+          placeholder="Search for a location..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="search-input"
+        />
+        
+        {searchQuery && filteredLocations.length > 0 && !selectedLocation && (
+          <div className="location-list">
+            {filteredLocations.map(loc => (
+              <button
+                key={loc}
+                className="location-button"
+                onClick={() => loadTideData(loc)}
+              >
+                {loc.replace(/_/g, ' ')}
+              </button>
+            ))}
+          </div>
+        )}
+        
+        {searchQuery && filteredLocations.length === 0 && (
+          <div className="no-results">No locations found matching "{searchQuery}"</div>
+        )}
       </div>
+      
+      {selectedLocation && (
+        <div className="results-section">
+          <div className="location-header">
+            <h2>{selectedLocation.replace(/_/g, ' ')}</h2>
+            <button 
+              className="clear-button"
+              onClick={() => {
+                setSelectedLocation(null)
+                setTideData(null)
+                setSearchQuery('')
+              }}
+            >
+              Clear
+            </button>
+          </div>
+          
+          <p className="subtitle">Next 2 weeks of tide data</p>
+          
+          {dataLoading ? (
+            <div className="loading">Loading tide data...</div>
+          ) : tideData && tideData.length > 0 ? (
+            <div className="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Time</th>
+                    <th>Tide (m)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tideData.map((row, index) => (
+                    <tr key={index}>
+                      <td>{row.time}</td>
+                      <td className={row.tide_m >= 0 ? 'positive' : 'negative'}>
+                        {row.tide_m.toFixed(2)}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div className="no-results">No tide data available for the next 2 weeks</div>
+          )}
+        </div>
+      )}
+      
+      {!selectedLocation && !searchQuery && (
+        <div className="info">
+          <p>Search for a location to see tide predictions for the next 2 weeks.</p>
+          <p><strong>Available locations:</strong> {locations.map(l => l.replace(/_/g, ' ')).join(', ')}</p>
+        </div>
+      )}
     </div>
   )
 }
