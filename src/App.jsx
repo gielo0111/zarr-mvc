@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react'
 import * as zarr from 'zarrita'
 
 function App() {
-  const [locations, setLocations] = useState({})
+  const [manifest, setManifest] = useState(null)
   const [selectedLocation, setSelectedLocation] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [tideData, setTideData] = useState(null)
@@ -11,22 +11,25 @@ function App() {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    async function loadLocations() {
+    async function loadManifest() {
       try {
         const response = await fetch('/locations.json')
-        const locs = await response.json()
-        setLocations(locs)
+        const data = await response.json()
+        setManifest(data)
         setLoading(false)
       } catch (err) {
-        console.error('Error loading locations:', err)
+        console.error('Error loading manifest:', err)
         setError('Failed to load locations')
         setLoading(false)
       }
     }
-    loadLocations()
+    loadManifest()
   }, [])
 
-  const locationNames = useMemo(() => Object.keys(locations), [locations])
+  const locationNames = useMemo(() => {
+    if (!manifest?.locations) return []
+    return Object.keys(manifest.locations)
+  }, [manifest])
 
   const filteredLocations = useMemo(() => {
     if (!searchQuery.trim()) return locationNames
@@ -42,19 +45,20 @@ function App() {
       setSelectedLocation(location)
       setTideData(null)
       
-      const meta = locations[location]
-      if (!meta) {
-        throw new Error('Location metadata not found')
+      const locMeta = manifest.locations[location]
+      const timeMeta = manifest.time
+      if (!locMeta || !timeMeta) {
+        throw new Error('Metadata not found')
       }
       
       const now = Date.now()
       const twoWeeksMs = 14 * 24 * 60 * 60 * 1000
       const endTime = now + twoWeeksMs
       
-      const startIdx = Math.max(0, Math.floor((now - meta.start_time) / meta.interval_ms))
-      const endIdx = Math.min(meta.count, Math.ceil((endTime - meta.start_time) / meta.interval_ms))
+      const startIdx = Math.max(0, Math.floor((now - timeMeta.start_time) / timeMeta.interval_ms))
+      const endIdx = Math.min(timeMeta.count, Math.ceil((endTime - timeMeta.start_time) / timeMeta.interval_ms))
       
-      if (startIdx >= meta.count || endIdx <= 0) {
+      if (startIdx >= timeMeta.count || endIdx <= 0) {
         setTideData([])
         setDataLoading(false)
         return
@@ -64,9 +68,13 @@ function App() {
       const store = new zarr.FetchStore(storeUrl)
       const root = zarr.root(store)
       
-      const timeArray = await zarr.open.v3(root.resolve(`${location}/time`), { kind: 'array' })
-      const tideArray = await zarr.open.v3(root.resolve(`${location}/tide_m`), { kind: 'array' })
+      // Shared time array at root
+      const timeArray = await zarr.open.v3(root.resolve('time'), { kind: 'array' })
+      // Tide data under shard/location/tide_m
+      const tidePath = `${locMeta.shard}/${location}/tide_m`
+      const tideArray = await zarr.open.v3(root.resolve(tidePath), { kind: 'array' })
       
+      // Fetch only the chunks needed for 2-week window
       const timeData = await zarr.get(timeArray, [zarr.slice(startIdx, endIdx)])
       const tideValues = await zarr.get(tideArray, [zarr.slice(startIdx, endIdx)])
       
@@ -82,7 +90,7 @@ function App() {
         }
       }
       
-      console.log(`Loaded ${filteredData.length} records (indices ${startIdx}-${endIdx})`)
+      console.log(`Loaded ${filteredData.length} records (indices ${startIdx}-${endIdx}, path: ${tidePath})`)
       setTideData(filteredData)
       setDataLoading(false)
     } catch (err) {
@@ -152,6 +160,7 @@ function App() {
                 setSelectedLocation(null)
                 setTideData(null)
                 setSearchQuery('')
+                setError(null)
               }}
             >
               Clear
