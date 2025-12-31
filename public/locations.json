@@ -1,14 +1,22 @@
 {
-  "Ahipara": {
+  "time": {
     "start_time": 1757289600000,
     "end_time": 1924991100000,
     "interval_ms": 900000,
     "count": 186336
   },
-  "Ahu_Ahu": {
-    "start_time": 1757289600000,
-    "end_time": 1924991100000,
-    "interval_ms": 900000,
-    "count": 186336
+  "locations": {
+    "Ahipara": {
+      "shard": "a",
+      "count": 186336,
+      "tide_min": -1.71,
+      "tide_max": 1.7
+    },
+    "Ahu_Ahu": {
+      "shard": "a",
+      "count": 186336,
+      "tide_min": -1.96,
+      "tide_max": 1.94
+    }
   }
 }
