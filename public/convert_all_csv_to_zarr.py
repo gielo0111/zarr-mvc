@@ -86,8 +86,14 @@ def convert_all_csv_to_zarr():
         # Verify time alignment with shared time
         loc_timestamps = pd.to_datetime(df['time'])
         loc_time = (loc_timestamps.astype('int64') // 10**6).values
+        
         if len(loc_time) != time_count:
-            print(f"  WARNING: Time count mismatch ({len(loc_time)} vs {time_count})")
+            print(f"  ERROR: Time count mismatch ({len(loc_time)} vs {time_count}). Skipping.")
+            continue
+        
+        if not np.array_equal(loc_time, shared_time):
+            print(f"  ERROR: Timestamps don't match shared time axis. Skipping.")
+            continue
         
         # Create shard group if needed
         if shard not in [g for g in root.group_keys()]:

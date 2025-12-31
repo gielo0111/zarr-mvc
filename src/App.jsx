@@ -55,10 +55,11 @@ function App() {
       const twoWeeksMs = 14 * 24 * 60 * 60 * 1000
       const endTime = now + twoWeeksMs
       
+      const locCount = locMeta.count
       const startIdx = Math.max(0, Math.floor((now - timeMeta.start_time) / timeMeta.interval_ms))
-      const endIdx = Math.min(timeMeta.count, Math.ceil((endTime - timeMeta.start_time) / timeMeta.interval_ms))
+      const endIdx = Math.min(locCount, timeMeta.count, Math.ceil((endTime - timeMeta.start_time) / timeMeta.interval_ms))
       
-      if (startIdx >= timeMeta.count || endIdx <= 0) {
+      if (startIdx >= locCount || endIdx <= 0 || startIdx >= endIdx) {
         setTideData([])
         setDataLoading(false)
         return
