@@ -1,4 +1,14 @@
-[
-  "Ahipara",
-  "Ahu_Ahu"
-]
+{
+  "Ahipara": {
+    "start_time": 1757289600000,
+    "end_time": 1924991100000,
+    "interval_ms": 900000,
+    "count": 186336
+  },
+  "Ahu_Ahu": {
+    "start_time": 1757289600000,
+    "end_time": 1924991100000,
+    "interval_ms": 900000,
+    "count": 186336
+  }
+}

@@ -1,7 +1,7 @@
-# Tide Data Zarr Viewer - Proof of Concept
+# Tide Data Zarr Viewer
 
 ## Overview
-A React + Vite proof of concept that demonstrates reading and displaying tide data from Zstd-compressed Zarr format in a web browser using zarrita.js.
+A React + Vite application that displays tide forecasts from multiple locations stored in Zstd-compressed Zarr v3 format. Features searchable location selection and efficient chunk-based data queries.
 
 ## Project Structure
 ```
@@ -9,27 +9,25 @@ A React + Vite proof of concept that demonstrates reading and displaying tide da
 ├── vite.config.js          # Vite configuration
 ├── src/
 │   ├── main.jsx           # React entry point
-│   ├── App.jsx            # Main component - loads and displays Zarr data
-│   └── index.css          # Styles
+│   ├── App.jsx            # Main component - search and display tide data
+│   └── index.css          # Dark theme styles
 └── public/
-    ├── tide_data.csv      # Original CSV data
-    ├── convert_csv_to_zarr.py  # Python conversion script
-    └── tide_data.zarr/    # Zarr directory (Zstd compressed)
+    ├── *_tide.csv         # Source CSV files (per location)
+    ├── convert_all_csv_to_zarr.py  # Multi-location conversion script
+    ├── locations.json     # Location metadata (start_time, interval, count)
+    └── tides.zarr/        # Zarr v3 directory (Zstd compressed)
         ├── zarr.json      # Root metadata
-        ├── time/          # Time array
-        │   ├── zarr.json
-        │   └── c/0        # Chunk data (Zstd compressed)
-        └── tide_m/        # Tide measurement array
-            ├── zarr.json
-            └── c/0        # Chunk data (Zstd compressed)
+        └── {location}/    # Per-location group
+            ├── time/      # Unix timestamps (int64 ms)
+            └── tide_m/    # Tide values (float64)
 ```
 
 ## How It Works
-1. **CSV to Zarr Conversion**: The Python script `convert_csv_to_zarr.py` reads `tide_data.csv` and creates a Zarr v3 store with Zstd-compressed chunks.
+1. **CSV to Zarr Conversion**: `convert_all_csv_to_zarr.py` reads all `*_tide.csv` files and creates a single Zarr v3 store with location-based groups and Zstd compression. Also generates `locations.json` with time metadata.
 
-2. **Data Loading**: The React app uses `zarrita.js` to load the Zarr data. The `numcodecs` package handles Zstd decompression automatically.
+2. **Efficient Chunk Queries**: The app calculates array indices from time metadata and uses `zarr.slice()` to fetch only the chunks needed for the 2-week forecast window.
 
-3. **Display**: The data is rendered in a styled table showing time and tide measurements.
+3. **Display**: Search/select a location to view the next 2 weeks of tide predictions in a styled table.
 
 ## Running the Project
 ```bash
@@ -37,21 +35,19 @@ npm run dev
 ```
 
 ## Regenerating Zarr Data
-If you modify the CSV file, run:
+If you modify or add CSV files, run:
 ```bash
-cd public && python convert_csv_to_zarr.py
+cd public && python convert_all_csv_to_zarr.py
 ```
 
 ## Technical Notes
 - Zarr v3 format with Zstd compression
 - `zarrita.js` library for reading Zarr data in browser
-- `numcodecs` package provides WASM-based Zstd decompression
-- Must use `zarr.open.v3()` for Zarr v3 data (not auto-detect)
-- Time strings are encoded as fixed-length UTF-32 (little endian)
-- Tide values are encoded as float64
+- Timestamps stored as int64 Unix milliseconds (not strings)
+- Chunk slicing uses location + time to fetch only needed data
 - Server runs on port 5000
 
 ## Recent Changes
-- 2025-12-30: Migrated to zarrita.js with numcodecs for Zstd decompression
-- 2025-12-30: Added Zstd compression support with browser-side decompression
-- 2025-12-30: Initial implementation with CSV, Python conversion script, and React viewer
+- 2025-12-31: Added chunk-based queries using time+location slicing
+- 2025-12-31: Multi-location support with searchable UI
+- 2025-12-30: Initial implementation with zarrita.js and Zstd compression

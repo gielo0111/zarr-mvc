@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react'
 import * as zarr from 'zarrita'
 
 function App() {
-  const [locations, setLocations] = useState([])
+  const [locations, setLocations] = useState({})
   const [selectedLocation, setSelectedLocation] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
   const [tideData, setTideData] = useState(null)
@@ -26,19 +26,39 @@ function App() {
     loadLocations()
   }, [])
 
+  const locationNames = useMemo(() => Object.keys(locations), [locations])
+
   const filteredLocations = useMemo(() => {
-    if (!searchQuery.trim()) return locations
+    if (!searchQuery.trim()) return locationNames
     const query = searchQuery.toLowerCase().replace(/_/g, ' ')
-    return locations.filter(loc => 
+    return locationNames.filter(loc => 
       loc.toLowerCase().replace(/_/g, ' ').includes(query)
     )
-  }, [locations, searchQuery])
+  }, [locationNames, searchQuery])
 
   async function loadTideData(location) {
     try {
       setDataLoading(true)
       setSelectedLocation(location)
       setTideData(null)
+      
+      const meta = locations[location]
+      if (!meta) {
+        throw new Error('Location metadata not found')
+      }
+      
+      const now = Date.now()
+      const twoWeeksMs = 14 * 24 * 60 * 60 * 1000
+      const endTime = now + twoWeeksMs
+      
+      const startIdx = Math.max(0, Math.floor((now - meta.start_time) / meta.interval_ms))
+      const endIdx = Math.min(meta.count, Math.ceil((endTime - meta.start_time) / meta.interval_ms))
+      
+      if (startIdx >= meta.count || endIdx <= 0) {
+        setTideData([])
+        setDataLoading(false)
+        return
+      }
       
       const storeUrl = window.location.origin + '/tides.zarr'
       const store = new zarr.FetchStore(storeUrl)
@@ -47,12 +67,8 @@ function App() {
       const timeArray = await zarr.open.v3(root.resolve(`${location}/time`), { kind: 'array' })
       const tideArray = await zarr.open.v3(root.resolve(`${location}/tide_m`), { kind: 'array' })
       
-      const timeData = await zarr.get(timeArray)
-      const tideValues = await zarr.get(tideArray)
-      
-      const now = Date.now()
-      const twoWeeksMs = 14 * 24 * 60 * 60 * 1000
-      const endTime = now + twoWeeksMs
+      const timeData = await zarr.get(timeArray, [zarr.slice(startIdx, endIdx)])
+      const tideValues = await zarr.get(tideArray, [zarr.slice(startIdx, endIdx)])
       
       const filteredData = []
       for (let i = 0; i < timeData.data.length; i++) {
@@ -66,6 +82,7 @@ function App() {
         }
       }
       
+      console.log(`Loaded ${filteredData.length} records (indices ${startIdx}-${endIdx})`)
       setTideData(filteredData)
       setDataLoading(false)
     } catch (err) {
