@@ -106,7 +106,7 @@ function App() {
           className="search-input"
         />
         
-        {searchQuery && filteredLocations.length > 0 && !selectedLocation && (
+        {!selectedLocation && filteredLocations.length > 0 && (
           <div className="location-list">
             {filteredLocations.map(loc => (
               <button
@@ -172,12 +172,6 @@ function App() {
         </div>
       )}
       
-      {!selectedLocation && !searchQuery && (
-        <div className="info">
-          <p>Search for a location to see tide predictions for the next 2 weeks.</p>
-          <p><strong>Available locations:</strong> {locations.map(l => l.replace(/_/g, ' ')).join(', ')}</p>
-        </div>
-      )}
     </div>
   )
 }
