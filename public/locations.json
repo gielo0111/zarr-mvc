@@ -6,17 +6,25 @@
     "count": 186336
   },
   "locations": {
-    "Ahipara": {
+    "Ahipara_173.1_-35.2": {
       "shard": "a",
       "count": 186336,
       "tide_min": -1.71,
-      "tide_max": 1.7
+      "tide_max": 1.7,
+      "name": "Ahipara",
+      "region": "Northland",
+      "latitude": 173.142104,
+      "longitude": -35.167194
     },
-    "Ahu_Ahu": {
+    "Ahu_Ahu_173.9_-39.1": {
       "shard": "a",
       "count": 186336,
       "tide_min": -1.96,
-      "tide_max": 1.94
+      "tide_max": 1.94,
+      "name": "Ahu Ahu Road",
+      "region": "Taranaki",
+      "latitude": 173.921969,
+      "longitude": -39.116988
     }
   }
 }

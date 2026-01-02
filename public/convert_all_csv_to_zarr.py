@@ -1,6 +1,7 @@
 """
 Hybrid Zarr v3 converter for tide data.
 - Reads all CSVs from csv_data folder
+- Looks up location IDs from tides-combined.json
 - Creates shared time array at root
 - Shards locations by first letter for S3 scalability
 - Uses 24-hour chunks (~96 samples at 15-min intervals)
@@ -22,10 +23,46 @@ def get_shard_prefix(location_name):
     """Get first letter as shard prefix (lowercase)"""
     return location_name[0].lower() if location_name else 'x'
 
+def build_location_lookup(tides_combined_path):
+    """Build a lookup from CSV name prefix to full location ID"""
+    lookup = {}
+    location_info = {}
+    
+    if not tides_combined_path.exists():
+        print(f"Warning: {tides_combined_path} not found. Using CSV names as-is.")
+        return lookup, location_info
+    
+    with open(tides_combined_path) as f:
+        data = json.load(f)
+    
+    for region, locations in data.get("data", {}).items():
+        for loc in locations:
+            loc_id = loc.get("id", "")
+            loc_name = loc.get("name", "")
+            
+            # Extract the prefix (part before coordinates) from ID
+            # e.g., "Ahu_Ahu_173.9_-39.1" -> match against "Ahu_Ahu"
+            parts = loc_id.rsplit("_", 2)
+            if len(parts) >= 3:
+                prefix = parts[0]
+            else:
+                prefix = loc_id
+            
+            lookup[prefix] = loc_id
+            location_info[loc_id] = {
+                "name": loc_name,
+                "region": region,
+                "latitude": loc.get("latitude"),
+                "longitude": loc.get("longitude")
+            }
+    
+    return lookup, location_info
+
 def convert_all_csv_to_zarr():
     public_dir = Path(__file__).parent
     csv_dir = public_dir / "csv_data"
     zarr_path = public_dir / "tides.zarr"
+    tides_combined_path = public_dir / "tides-combined.json"
     
     if zarr_path.exists():
         shutil.rmtree(zarr_path)
@@ -36,7 +73,11 @@ def convert_all_csv_to_zarr():
         print(f"No CSV files found in {csv_dir}")
         return
     
-    print(f"Found {len(csv_files)} CSV files in {csv_dir}:")
+    # Build location lookup from tides-combined.json
+    location_lookup, location_info = build_location_lookup(tides_combined_path)
+    print(f"Loaded {len(location_lookup)} location mappings from tides-combined.json")
+    
+    print(f"\nFound {len(csv_files)} CSV files in {csv_dir}:")
     for f in csv_files:
         print(f"  - {f.name}")
     
@@ -75,11 +116,14 @@ def convert_all_csv_to_zarr():
     
     # Second pass: process all locations
     for csv_file in csv_files:
-        location_name = csv_file.stem.replace("_tide", "")
-        shard = get_shard_prefix(location_name)
+        csv_name = csv_file.stem.replace("_tide", "")
+        
+        # Look up the full location ID from tides-combined.json
+        location_id = location_lookup.get(csv_name, csv_name)
+        shard = get_shard_prefix(location_id)
         shards.add(shard)
         
-        print(f"\nProcessing {location_name} (shard: {shard}/)...")
+        print(f"\nProcessing {csv_name} -> {location_id} (shard: {shard}/)...")
         
         df = pd.read_csv(csv_file)
         
@@ -101,8 +145,8 @@ def convert_all_csv_to_zarr():
         
         shard_group = root[shard]
         
-        # Create location group under shard
-        location_group = shard_group.create_group(location_name)
+        # Create location group under shard using the full ID
+        location_group = shard_group.create_group(location_id)
         
         # Store only tide_m (time is shared at root)
         tide_values = df['tide_m'].values.astype(np.float64)
@@ -113,12 +157,17 @@ def convert_all_csv_to_zarr():
             compressors=compressors
         )
         
-        locations_meta[location_name] = {
+        # Include location info in manifest if available
+        loc_meta = {
             "shard": shard,
             "count": len(df),
             "tide_min": float(tide_values.min()),
             "tide_max": float(tide_values.max())
         }
+        if location_id in location_info:
+            loc_meta.update(location_info[location_id])
+        
+        locations_meta[location_id] = loc_meta
         
         print(f"  Rows: {len(df)}")
         print(f"  Tide range: {tide_values.min():.2f}m to {tide_values.max():.2f}m")
