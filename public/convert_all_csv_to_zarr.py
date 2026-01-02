@@ -67,7 +67,7 @@ def convert_all_csv_to_zarr():
     if zarr_path.exists():
         shutil.rmtree(zarr_path)
     
-    csv_files = list(csv_dir.glob("*_tide.csv"))
+    csv_files = list(csv_dir.glob("*_tide_ts.csv"))
     
     if not csv_files:
         print(f"No CSV files found in {csv_dir}")
@@ -116,7 +116,7 @@ def convert_all_csv_to_zarr():
     
     # Second pass: process all locations
     for csv_file in csv_files:
-        csv_name = csv_file.stem.replace("_tide", "")
+        csv_name = csv_file.stem.replace("_tide_ts", "")
         
         # Look up the full location ID from tides-combined.json
         location_id = location_lookup.get(csv_name, csv_name)
