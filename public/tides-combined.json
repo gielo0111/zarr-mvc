@@ -1,0 +1,1303 @@
+{
+  "country": "New Zealand",
+  "data": {
+    "Bay of Plenty": [
+      {
+        "name": "Matakana - Puni s Farm",
+        "id": "Matakana_176.1_-37.6",
+        "latitude": 176.145065,
+        "longitude": -37.619259
+      },
+      {
+        "name": "Main Beach",
+        "id": "Main_Bea_176.2_-37.6",
+        "latitude": 176.182748,
+        "longitude": -37.63067
+      },
+      {
+        "name": "Tay St",
+        "id": "Tay_St_176.2_-37.6",
+        "latitude": 176.20167,
+        "longitude": -37.644975
+      },
+      {
+        "name": "Papamoa",
+        "id": "Papamoa_176.3_-37.7",
+        "latitude": 176.285959,
+        "longitude": -37.693524
+      },
+      {
+        "name": "Motiti Island",
+        "id": "Motiti_I_176.4_-37.6",
+        "latitude": 176.410112,
+        "longitude": -37.622567
+      },
+      {
+        "name": "Whakatane Heads",
+        "id": "Whakatan_177.0_-37.9",
+        "latitude": 177.008992,
+        "longitude": -37.940448
+      },
+      {
+        "name": "Ohope Beach",
+        "id": "Ohope_Be_177.0_-38.0",
+        "latitude": 177.036027,
+        "longitude": -37.959635
+      },
+      {
+        "name": "Hawai",
+        "id": "Hawai_177.5_-37.9",
+        "latitude": 177.53113,
+        "longitude": -37.916436
+      },
+      {
+        "name": "Motu River Mouth",
+        "id": "Motu_Riv_177.6_-37.9",
+        "latitude": 177.584349,
+        "longitude": -37.856531
+      },
+      {
+        "name": "Waihi Beach",
+        "id": "Waihi_Be_175.9_-37.4",
+        "latitude": 175.943841,
+        "longitude": -37.40079
+      }
+    ],
+    "Gisborne": [
+      {
+        "name": "Hicks Bay",
+        "id": "Hicks_Ba_178.3_-37.6",
+        "latitude": 178.298261,
+        "longitude": -37.58699
+      },
+      {
+        "name": "Te Araroa",
+        "id": "Te_Araro_178.4_-37.6",
+        "latitude": 178.370696,
+        "longitude": -37.631308
+      },
+      {
+        "name": "Waiapu",
+        "id": "Waiapu_178.5_-37.8",
+        "latitude": 178.485823,
+        "longitude": -37.78393
+      },
+      {
+        "name": "Waipiro Bay",
+        "id": "Waipiro_178.3_-38.0",
+        "latitude": 178.33707,
+        "longitude": -38.020206
+      },
+      {
+        "name": "Tokomaru Bay",
+        "id": "Tokomaru_178.3_-38.1",
+        "latitude": 178.321174,
+        "longitude": -38.13069
+      },
+      {
+        "name": "Anaura Bay",
+        "id": "Anaura_B_178.3_-38.2",
+        "latitude": 178.317572,
+        "longitude": -38.243015
+      },
+      {
+        "name": "Tolaga Bay",
+        "id": "Tolaga_B_178.3_-38.4",
+        "latitude": 178.31262,
+        "longitude": -38.371891
+      },
+      {
+        "name": "Loisell s Beach",
+        "id": "Loisell_178.3_-38.4",
+        "latitude": 178.301045,
+        "longitude": -38.448253
+      },
+      {
+        "name": "Makorori Centres",
+        "id": "Makorori_178.1_-38.7",
+        "latitude": 178.121977,
+        "longitude": -38.655563
+      },
+      {
+        "name": "Makorori Point",
+        "id": "Makoro_P_178.1_-38.7",
+        "latitude": 178.10886,
+        "longitude": -38.664159
+      },
+      {
+        "name": "Whales",
+        "id": "Whales_178.1_-38.7",
+        "latitude": 178.09867,
+        "longitude": -38.669434
+      },
+      {
+        "name": "Stock Route",
+        "id": "Stock_Ro_178.1_-38.7",
+        "latitude": 178.075281,
+        "longitude": -38.689172
+      },
+      {
+        "name": "Waikanae Beach",
+        "id": "Waikanae_178.0_-38.7",
+        "latitude": 178.014469,
+        "longitude": -38.672389
+      },
+      {
+        "name": "Midway Pipe",
+        "id": "Midway_P_178.0_-38.7",
+        "latitude": 178.001237,
+        "longitude": -38.673996
+      }
+    ],
+    "Hawke's Bay": [
+      {
+        "name": "Aropaoanui",
+        "id": "Aropaoan_177.0_-39.3",
+        "latitude": 176.999451,
+        "longitude": -39.284529
+      },
+      {
+        "name": "Stingray Bay",
+        "id": "Stingray_176.9_-39.3",
+        "latitude": 176.937284,
+        "longitude": -39.337372
+      },
+      {
+        "name": "The Gap - Napier",
+        "id": "The_Gp_A_176.9_-39.5",
+        "latitude": 176.874586,
+        "longitude": -39.452844
+      },
+      {
+        "name": "City Reef",
+        "id": "City_Ree_176.9_-39.5",
+        "latitude": 176.892502,
+        "longitude": -39.478181
+      },
+      {
+        "name": "Awatoto",
+        "id": "Awatoto_176.9_-39.5",
+        "latitude": 176.922477,
+        "longitude": -39.535409
+      },
+      {
+        "name": "Te Awanga",
+        "id": "Te_Awang_177.0_-39.6",
+        "latitude": 176.98795,
+        "longitude": -39.63047
+      },
+      {
+        "name": "Ocean Beach",
+        "id": "Ocean_B_177.0_-39.7",
+        "latitude": 177.013234,
+        "longitude": -39.74521
+      },
+      {
+        "name": "Waimarama Beach",
+        "id": "Waimaram_177.0_-39.8",
+        "latitude": 176.996615,
+        "longitude": -39.81578
+      },
+      {
+        "name": "Cray Bay",
+        "id": "Cray_Bay_177.0_-39.8",
+        "latitude": 176.998105,
+        "longitude": -39.84294
+      },
+      {
+        "name": "Mahanga - Oraka Beach",
+        "id": "Mahanga_177.9_-39.0",
+        "latitude": 177.887534,
+        "longitude": -39.019619
+      },
+      {
+        "name": "The Spit - Whangawehi",
+        "id": "The_Spit_177.9_-39.1",
+        "latitude": 177.930702,
+        "longitude": -39.086532
+      },
+      {
+        "name": "Diners Beach",
+        "id": "Diners_B_178.0_-39.1",
+        "latitude": 177.957663,
+        "longitude": -39.138355
+      },
+      {
+        "name": "Opoutama",
+        "id": "Opoutama_177.9_-39.1",
+        "latitude": 177.854557,
+        "longitude": -39.066486
+      },
+      {
+        "name": "Point Annihilation",
+        "id": "Point_An_177.8_-39.1",
+        "latitude": 177.827397,
+        "longitude": -39.076222
+      },
+      {
+        "name": "Blacks Reef",
+        "id": "Blacks_R_177.8_-39.1",
+        "latitude": 177.796997,
+        "longitude": -39.068551
+      }
+    ],
+    "Northland": [
+      {
+        "name": "Te Werahi Beach",
+        "id": "Te_Werah_172.7_-34.5",
+        "latitude": 172.671375,
+        "longitude": -34.458192
+      },
+      {
+        "name": "Spirits Bay",
+        "id": "Spirits_172.8_-34.4",
+        "latitude": 172.835864,
+        "longitude": -34.443984
+      },
+      {
+        "name": "The Bluff",
+        "id": "The_Bluf_172.9_-34.7",
+        "latitude": 172.885399,
+        "longitude": -34.684426
+      },
+      {
+        "name": "Great Exibition Bay",
+        "id": "Great_Ex_173.0_-34.6",
+        "latitude": 173.013807,
+        "longitude": -34.619729
+      },
+      {
+        "name": "Rawara Beach",
+        "id": "Rawara_B_173.1_-34.7",
+        "latitude": 173.083459,
+        "longitude": -34.720322
+      },
+      {
+        "name": "Henderson Bay",
+        "id": "Henderso_173.1_-34.8",
+        "latitude": 173.124937,
+        "longitude": -34.752286
+      },
+      {
+        "name": "Houhora Hds",
+        "id": "Houhora_173.2_-34.8",
+        "latitude": 173.164792,
+        "longitude": -34.82572
+      },
+      {
+        "name": "Karikari Beach",
+        "id": "Karikari_173.4_-34.8",
+        "latitude": 173.372966,
+        "longitude": -34.84512
+      },
+      {
+        "name": "Tokerau Beach",
+        "id": "Tokerau_173.4_-34.9",
+        "latitude": 173.370881,
+        "longitude": -34.893978
+      },
+      {
+        "name": "Paradise Bay",
+        "id": "Paradise_173.6_-35.0",
+        "latitude": 173.644365,
+        "longitude": -34.964653
+      },
+      {
+        "name": "Taupo Bay",
+        "id": "Taupo_Ba_173.7_-35.0",
+        "latitude": 173.716757,
+        "longitude": -34.995956
+      },
+      {
+        "name": "Matauri Bay",
+        "id": "Matauri_173.9_-35.0",
+        "latitude": 173.914985,
+        "longitude": -35.033699
+      },
+      {
+        "name": "Takou Bay",
+        "id": "Takou_Ba_173.9_-35.1",
+        "latitude": 173.941055,
+        "longitude": -35.095192
+      },
+      {
+        "name": "Oakura",
+        "id": "Oakura_174.3_-35.4",
+        "latitude": 174.344879,
+        "longitude": -35.389552
+      },
+      {
+        "name": "Helena Bay",
+        "id": "Helena_B_174.4_-35.5",
+        "latitude": 174.428282,
+        "longitude": -35.45006
+      },
+      {
+        "name": "Sandy Bay",
+        "id": "Sandy_Ba_174.5_-35.6",
+        "latitude": 174.475623,
+        "longitude": -35.555656
+      },
+      {
+        "name": "Ngunguru Bar",
+        "id": "Ngunguru_174.5_-35.6",
+        "latitude": 174.51377,
+        "longitude": -35.63598
+      },
+      {
+        "name": "Ocean Beach - Whangarei Heads",
+        "id": "Ocean_Be_174.6_-35.8",
+        "latitude": 174.574614,
+        "longitude": -35.836327
+      },
+      {
+        "name": "Ruakaka",
+        "id": "Ruakaka_174.5_-35.9",
+        "latitude": 174.462716,
+        "longitude": -35.908967
+      },
+      {
+        "name": "Russell - Ocean Beach",
+        "id": "Russell_174.1_-35.3",
+        "latitude": 174.135916,
+        "longitude": -35.259347
+      },
+      {
+        "name": "Elliot Bay",
+        "id": "Elliot_B_174.3_-35.3",
+        "latitude": 174.290186,
+        "longitude": -35.274575
+      },
+      {
+        "name": "Bland Bay",
+        "id": "Bland_Ba_174.4_-35.3",
+        "latitude": 174.350854,
+        "longitude": -35.339556
+      },
+      {
+        "name": "Waipu Cove",
+        "id": "Waipu_Co_174.5_-36.0",
+        "latitude": 174.508139,
+        "longitude": -36.028423
+      },
+      {
+        "name": "Mangawhai Heads",
+        "id": "Mangawha_174.6_-36.1",
+        "latitude": 174.599773,
+        "longitude": -36.080964
+      },
+      {
+        "name": "Herekino Harbour",
+        "id": "Herekino_173.2_-35.3",
+        "latitude": 173.152376,
+        "longitude": -35.287111
+      },
+      {
+        "name": "Tanutanu",
+        "id": "Tanutanu_173.1_-35.2",
+        "latitude": 173.081131,
+        "longitude": -35.21667
+      },
+      {
+        "name": "The Box",
+        "id": "The_Box_173.1_-35.2",
+        "latitude": 173.051111,
+        "longitude": -35.191039
+      },
+      {
+        "name": "Supertubes",
+        "id": "Supertub_173.1_-35.2",
+        "latitude": 173.083562,
+        "longitude": -35.165575
+      },
+      {
+        "name": "Shipwreck Bay",
+        "id": "Shipwrec_173.1_-35.2",
+        "latitude": 173.119477,
+        "longitude": -35.175712
+      },
+      {
+        "name": "Ahipara",
+        "id": "Ahipara_173.1_-35.2",
+        "latitude": 173.142104,
+        "longitude": -35.167194
+      }
+    ],
+    "Wellington": [
+      {
+        "name": "Slipperies",
+        "id": "Slipperi_176.2_-40.9",
+        "latitude": 176.232043,
+        "longitude": -40.868866
+      },
+      {
+        "name": "Castlepoint Beach",
+        "id": "Castlepo_176.2_-40.9",
+        "latitude": 176.226907,
+        "longitude": -40.900365
+      },
+      {
+        "name": "The Gap",
+        "id": "The_Gp_B_176.2_-40.9",
+        "latitude": 176.222428,
+        "longitude": -40.908768
+      },
+      {
+        "name": "Xmas Bay",
+        "id": "Xmas_Bay_176.2_-40.9",
+        "latitude": 176.210023,
+        "longitude": -40.912565
+      },
+      {
+        "name": "Riversdale Beach",
+        "id": "Riversda_176.1_-41.1",
+        "latitude": 176.074494,
+        "longitude": -41.092681
+      },
+      {
+        "name": "Uruti Point",
+        "id": "Uruti_Po_176.1_-41.1",
+        "latitude": 176.052745,
+        "longitude": -41.137212
+      },
+      {
+        "name": "Tora Pit",
+        "id": "Tora_Pit_175.5_-41.5",
+        "latitude": 175.534449,
+        "longitude": -41.510064
+      },
+      {
+        "name": "White Rock Point",
+        "id": "White_Ro_175.4_-41.6",
+        "latitude": 175.42617,
+        "longitude": -41.572016
+      },
+      {
+        "name": "The Spit - Wellington",
+        "id": "TheSpit_175.4_-41.6",
+        "latitude": 175.361529,
+        "longitude": -41.587712
+      },
+      {
+        "name": "Schnappes",
+        "id": "Schnappe_175.3_-41.6",
+        "latitude": 175.32361,
+        "longitude": -41.609166
+      },
+      {
+        "name": "Waikana",
+        "id": "Waikana_175.0_-40.9",
+        "latitude": 175.018199,
+        "longitude": -40.859293
+      },
+      {
+        "name": "Kapiti Island",
+        "id": "Kapiti_I_175.0_-40.8",
+        "latitude": 174.954732,
+        "longitude": -40.829723
+      },
+      {
+        "name": "Windies",
+        "id": "Windies_175.2_-41.6",
+        "latitude": 175.22513,
+        "longitude": -41.584661
+      },
+      {
+        "name": "Lake Ferry",
+        "id": "Lake_Fer_175.1_-41.4",
+        "latitude": 175.138533,
+        "longitude": -41.401632
+      },
+      {
+        "name": "Eastbourne",
+        "id": "Eastbour_174.8_-41.3",
+        "latitude": 174.849827,
+        "longitude": -41.349795
+      },
+      {
+        "name": "Breaker Bay",
+        "id": "Breaker_174.8_-41.3",
+        "latitude": 174.827707,
+        "longitude": -41.33802
+      },
+      {
+        "name": "Lyall Bay",
+        "id": "Lyall_Ba_174.8_-41.3",
+        "latitude": 174.802379,
+        "longitude": -41.331797
+      },
+      {
+        "name": "Titahi Bay",
+        "id": "Titahi_B_174.8_-41.1",
+        "latitude": 174.833143,
+        "longitude": -41.105066
+      },
+      {
+        "name": "Plimmerton",
+        "id": "Plimmert_174.9_-41.1",
+        "latitude": 174.862989,
+        "longitude": -41.084529
+      },
+      {
+        "name": "Pa Point",
+        "id": "Pa_Point_174.8_-41.1",
+        "latitude": 174.837898,
+        "longitude": -41.066732
+      },
+      {
+        "name": "Paekakariki ",
+        "id": "Paekakar_174.9_-41.0",
+        "latitude": 174.946982,
+        "longitude": -40.98541
+      },
+      {
+        "name": "Pukerua Bay - Climbing Rocks",
+        "id": "Wairak_R_174.9_-41.0",
+        "latitude": 174.887698,
+        "longitude": -41.025379
+      }
+    ],
+    "Tasman": [
+      {
+        "name": "Wharariki Beach",
+        "id": "Whararik_172.7_-40.5",
+        "latitude": 172.668687,
+        "longitude": -40.504205
+      },
+      {
+        "name": "Paturau River",
+        "id": "Paturau_172.4_-40.6",
+        "latitude": 172.426909,
+        "longitude": -40.639715
+      },
+      {
+        "name": "Ruby Bay",
+        "id": "Ruby_Bay_173.1_-41.2",
+        "latitude": 173.084608,
+        "longitude": -41.224852
+      }
+    ],
+    "Nelson": [
+      {
+        "name": "Schnappers Point",
+        "id": "Schnapp_173.3_-41.2",
+        "latitude": 173.330087,
+        "longitude": -41.19777
+      },
+      {
+        "name": "Whangamoa Bar",
+        "id": "Whangamo_173.5_-41.1",
+        "latitude": 173.53051,
+        "longitude": -41.101715
+      }
+    ],
+    "Marlborough": [
+      {
+        "name": "Robin Hood Bay- Ellesmere",
+        "id": "Robin_Ho_174.1_-41.4",
+        "latitude": 174.076194,
+        "longitude": -41.35929
+      },
+      {
+        "name": "The Cut",
+        "id": "The_Cut_174.1_-41.5",
+        "latitude": 174.062332,
+        "longitude": -41.494877
+      }
+    ],
+    "Kaikoura District": [
+      {
+        "name": "Kekerengu",
+        "id": "Kekereng_174.0_-42.0",
+        "latitude": 174.014814,
+        "longitude": -42.002813
+      },
+      {
+        "name": "Mangamaunu",
+        "id": "Mangamau_173.8_-42.3",
+        "latitude": 173.751666,
+        "longitude": -42.303794
+      },
+      {
+        "name": "Meatworks",
+        "id": "Meatwork_173.8_-42.3",
+        "latitude": 173.752581,
+        "longitude": -42.319914
+      },
+      {
+        "name": "Kahutara",
+        "id": "Kahutara_173.6_-42.4",
+        "latitude": 173.590274,
+        "longitude": -42.435152
+      }
+    ],
+    "Canterbury": [
+      {
+        "name": "Clarence Point",
+        "id": "Clarence_173.9_-42.2",
+        "latitude": 173.934682,
+        "longitude": -42.17676
+      },
+      {
+        "name": "Whale Watch - Town Reef",
+        "id": "Whale_Wa_173.7_-42.4",
+        "latitude": 173.684009,
+        "longitude": -42.39618
+      },
+      {
+        "name": "Smithfield",
+        "id": "Smithfie_171.3_-44.4",
+        "latitude": 171.25473,
+        "longitude": -44.371643
+      },
+      {
+        "name": "Patiti",
+        "id": "Patiti_171.3_-44.4",
+        "latitude": 171.267268,
+        "longitude": -44.411188
+      },
+      {
+        "name": "Jacks Point",
+        "id": "Jacks_Po_171.3_-44.4",
+        "latitude": 171.262469,
+        "longitude": -44.432037
+      },
+      {
+        "name": "New Brighton",
+        "id": "New_Brig_172.7_-43.5",
+        "latitude": 172.736184,
+        "longitude": -43.506741
+      },
+      {
+        "name": "Sumner Bar",
+        "id": "Sumner_B_172.8_-43.6",
+        "latitude": 172.761916,
+        "longitude": -43.563066
+      },
+      {
+        "name": "Taylors Mistake",
+        "id": "Taylors_172.8_-43.6",
+        "latitude": 172.778298,
+        "longitude": -43.582228
+      }
+    ],
+    "Hurunui District": [
+      {
+        "name": "Motunau Island",
+        "id": "Motunau_173.1_-43.1",
+        "latitude": 173.083902,
+        "longitude": -43.064066
+      },
+      {
+        "name": "Amberley Beach",
+        "id": "Amberly_172.8_-43.2",
+        "latitude": 172.782946,
+        "longitude": -43.176058
+      }
+    ],
+    "Otago": [
+      {
+        "name": "Oamaru Harbour Entrance",
+        "id": "Oamaru_H_171.0_-45.1",
+        "latitude": 170.97658,
+        "longitude": -45.104897
+      },
+      {
+        "name": "Oamaru South",
+        "id": "Oamaru_S_171.0_-45.1",
+        "latitude": 170.959923,
+        "longitude": -45.128594
+      },
+      {
+        "name": "Karitane Beach",
+        "id": "Karita_B_170.7_-45.6",
+        "latitude": 170.659718,
+        "longitude": -45.645823
+      },
+      {
+        "name": "Potato Point",
+        "id": "Potato_P_170.6_-45.7",
+        "latitude": 170.62858,
+        "longitude": -45.739519
+      },
+      {
+        "name": "Kaka Point",
+        "id": "Kaka_Poi_169.8_-46.4",
+        "latitude": 169.785974,
+        "longitude": -46.386294
+      },
+      {
+        "name": "Aramoana Spit",
+        "id": "Aramoana_170.7_-45.8",
+        "latitude": 170.709983,
+        "longitude": -45.773791
+      },
+      {
+        "name": "Allans Beach",
+        "id": "Allans_B_170.7_-45.9",
+        "latitude": 170.696575,
+        "longitude": -45.880164
+      },
+      {
+        "name": "St Clair",
+        "id": "St_Clair_170.5_-45.9",
+        "latitude": 170.48984,
+        "longitude": -45.914798
+      },
+      {
+        "name": "Brighton",
+        "id": "Brighton_170.3_-45.9",
+        "latitude": 170.340044,
+        "longitude": -45.946579
+      },
+      {
+        "name": "Karitane",
+        "id": "Karitane_170.7_-45.6",
+        "latitude": 170.666579,
+        "longitude": -45.637645
+      }
+    ],
+    "Dunedin City": [
+      {
+        "name": "Matanaka",
+        "id": "Matanaka_170.7_-45.6",
+        "latitude": 170.688996,
+        "longitude": -45.614703
+      },
+      {
+        "name": "Wickliffe Bay",
+        "id": "Wickliff_170.7_-45.8",
+        "latitude": 170.733493,
+        "longitude": -45.830814
+      }
+    ],
+    "Clutha District": [
+      {
+        "name": "Cannibal Bay",
+        "id": "Cannibal_169.8_-46.5",
+        "latitude": 169.759494,
+        "longitude": -46.469921
+      },
+      {
+        "name": "Long Point",
+        "id": "Long_Poi_169.6_-46.6",
+        "latitude": 169.577375,
+        "longitude": -46.572482
+      },
+      {
+        "name": "Papatowai",
+        "id": "Papatowa_169.5_-46.6",
+        "latitude": 169.476555,
+        "longitude": -46.578954
+      }
+    ],
+    "Southland": [
+      {
+        "name": "Porpoise Bay",
+        "id": "Porpoise_169.1_-46.7",
+        "latitude": 169.104824,
+        "longitude": -46.655321
+      },
+      {
+        "name": "Oreti Beach",
+        "id": "Oreti_Be_168.2_-46.4",
+        "latitude": 168.22256,
+        "longitude": -46.442474
+      },
+      {
+        "name": "Riverton Rocks",
+        "id": "Riverton_168.0_-46.4",
+        "latitude": 168.027998,
+        "longitude": -46.369639
+      },
+      {
+        "name": "Colac Bay",
+        "id": "Colac_Ba_167.9_-46.4",
+        "latitude": 167.884814,
+        "longitude": -46.367478
+      },
+      {
+        "name": "Nicks Point",
+        "id": "Nicks_Po_167.9_-46.4",
+        "latitude": 167.887263,
+        "longitude": -46.379957
+      },
+      {
+        "name": "Beatons",
+        "id": "Beatons_167.7_-46.4",
+        "latitude": 167.731503,
+        "longitude": -46.350805
+      },
+      {
+        "name": "Blue Cliffs",
+        "id": "Blue_Cli_167.6_-46.2",
+        "latitude": 167.558507,
+        "longitude": -46.175545
+      },
+      {
+        "name": "Fiordland",
+        "id": "Fiordlan_166.9_-45.2",
+        "latitude": 166.895209,
+        "longitude": -45.207099
+      },
+      {
+        "name": "Barn Bay",
+        "id": "Big_Bay_168.1_-44.3",
+        "latitude": 168.110239,
+        "longitude": -44.296232
+      }
+    ],
+    "West Coast": [
+      {
+        "name": "Jackson Bay",
+        "id": "Jackson_168.6_-44.0",
+        "latitude": 168.638022,
+        "longitude": -43.991851
+      },
+      {
+        "name": "Bruce Bay",
+        "id": "Bruce_Ba_169.6_-43.6",
+        "latitude": 169.585067,
+        "longitude": -43.598321
+      },
+      {
+        "name": "Blaketown",
+        "id": "Blaketow_171.2_-42.4",
+        "latitude": 171.189016,
+        "longitude": -42.447911
+      },
+      {
+        "name": "Cobden",
+        "id": "Cobden_171.2_-42.4",
+        "latitude": 171.197447,
+        "longitude": -42.434424
+      },
+      {
+        "name": "Nine Mile",
+        "id": "Nine_Mil_171.5_-41.8",
+        "latitude": 171.451029,
+        "longitude": -41.780919
+      },
+      {
+        "name": "Tauranga Bay",
+        "id": "Tauranga_171.5_-41.8",
+        "latitude": 171.456543,
+        "longitude": -41.772333
+      },
+      {
+        "name": "Shingles",
+        "id": "Shingles_171.6_-41.7",
+        "latitude": 171.591899,
+        "longitude": -41.735855
+      },
+      {
+        "name": "Westport Breakwater",
+        "id": "Westport_171.6_-41.7",
+        "latitude": 171.591347,
+        "longitude": -41.727159
+      },
+      {
+        "name": "Waimaire",
+        "id": "Waimaire_171.9_-41.5",
+        "latitude": 171.928716,
+        "longitude": -41.519849
+      },
+      {
+        "name": "Karamea",
+        "id": "Karamea_172.1_-41.2",
+        "latitude": 172.09406,
+        "longitude": -41.240981
+      }
+    ],
+    "Waikato": [
+      {
+        "name": "Ruapuke",
+        "id": "Ruapuke_174.8_-37.9",
+        "latitude": 174.762571,
+        "longitude": -37.894352
+      },
+      {
+        "name": "Te Akau",
+        "id": "Te_Akau_174.8_-37.7",
+        "latitude": 174.818275,
+        "longitude": -37.721146
+      },
+      {
+        "name": "Mussell",
+        "id": "Mussell_174.8_-37.8",
+        "latitude": 174.830841,
+        "longitude": -37.780886
+      },
+      {
+        "name": "Waikawau",
+        "id": "Waikawau_175.5_-36.6",
+        "latitude": 175.528363,
+        "longitude": -36.598875
+      },
+      {
+        "name": "Whangapoua Bay",
+        "id": "Whangap_175.6_-36.7",
+        "latitude": 175.613404,
+        "longitude": -36.709381
+      },
+      {
+        "name": "Kuaotunu",
+        "id": "Kuaotunu_175.7_-36.7",
+        "latitude": 175.722103,
+        "longitude": -36.722438
+      },
+      {
+        "name": "Opito",
+        "id": "Opito_175.8_-36.7",
+        "latitude": 175.795168,
+        "longitude": -36.710868
+      },
+      {
+        "name": "Whitianga",
+        "id": "Whitiang_175.7_-36.8",
+        "latitude": 175.702722,
+        "longitude": -36.820492
+      },
+      {
+        "name": "Hotwater",
+        "id": "Hotwater_175.8_-36.9",
+        "latitude": 175.820637,
+        "longitude": -36.88145
+      },
+      {
+        "name": "Tairua",
+        "id": "Tairua_175.9_-37.0",
+        "latitude": 175.862904,
+        "longitude": -36.994366
+      },
+      {
+        "name": "Pauanui",
+        "id": "Pauanui_175.9_-37.0",
+        "latitude": 175.870831,
+        "longitude": -37.01929
+      },
+      {
+        "name": "Whangamata Beach",
+        "id": "Whangama_175.9_-37.2",
+        "latitude": 175.882599,
+        "longitude": -37.205166
+      },
+      {
+        "name": "Whiritoa",
+        "id": "Whiritoa_175.9_-37.3",
+        "latitude": 175.904112,
+        "longitude": -37.282087
+      },
+      {
+        "name": "The Reef",
+        "id": "The_Reef_174.7_-37.4",
+        "latitude": 174.706019,
+        "longitude": -37.400282
+      },
+      {
+        "name": "Port Waikato",
+        "id": "Port_Wai_174.7_-37.4",
+        "latitude": 174.70821,
+        "longitude": -37.395225
+      },
+      {
+        "name": "Indicators",
+        "id": "Indicato_174.8_-37.8",
+        "latitude": 174.796072,
+        "longitude": -37.822055
+      },
+      {
+        "name": "Whale Bay",
+        "id": "Whale_Ba_174.8_-37.8",
+        "latitude": 174.800877,
+        "longitude": -37.821749
+      },
+      {
+        "name": "Manu Bay",
+        "id": "Manu_Bay_174.8_-37.8",
+        "latitude": 174.812808,
+        "longitude": -37.820468
+      },
+      {
+        "name": "Ngarunui Beach",
+        "id": "Ngarun_B_174.8_-37.8",
+        "latitude": 174.825469,
+        "longitude": -37.816912
+      }
+    ],
+    "Manawatu-Whanganui": [
+      {
+        "name": "Rangiora St",
+        "id": "Rangiora_175.0_-39.9",
+        "latitude": 174.973271,
+        "longitude": -39.940761
+      },
+      {
+        "name": "Whanganui River Mouth",
+        "id": "Whanganu_175.0_-40.0",
+        "latitude": 174.992009,
+        "longitude": -39.952263
+      },
+      {
+        "name": "South Beach",
+        "id": "South_Be_175.0_-40.0",
+        "latitude": 175.011609,
+        "longitude": -39.963936
+      }
+    ],
+    "Taranaki": [
+      {
+        "name": "Wainui",
+        "id": "Waitotar_174.7_-39.9",
+        "latitude": 174.74693,
+        "longitude": -39.868213
+      },
+      {
+        "name": "Waverly",
+        "id": "Waverly_174.6_-39.8",
+        "latitude": 174.562528,
+        "longitude": -39.818123
+      },
+      {
+        "name": "Patea River Mouth",
+        "id": "Patea_Ri_174.5_-39.8",
+        "latitude": 174.4878,
+        "longitude": -39.7779
+      },
+      {
+        "name": "Opunake",
+        "id": "Opunake_173.9_-39.5",
+        "latitude": 173.854154,
+        "longitude": -39.459968
+      },
+      {
+        "name": "Arawhata Rd",
+        "id": "Arawhata_173.8_-39.4",
+        "latitude": 173.801342,
+        "longitude": -39.422403
+      },
+      {
+        "name": "Stent Road",
+        "id": "Stent_Ro_173.8_-39.2",
+        "latitude": 173.774535,
+        "longitude": -39.21889
+      },
+      {
+        "name": "Kumera Patch",
+        "id": "Kumera_P_173.8_-39.2",
+        "latitude": 173.822936,
+        "longitude": -39.16776
+      },
+      {
+        "name": "Ahu Ahu Road",
+        "id": "Ahu_Ahu_173.9_-39.1",
+        "latitude": 173.921969,
+        "longitude": -39.116988
+      },
+      {
+        "name": "Oakura Beach",
+        "id": "Oakura_B_173.9_-39.1",
+        "latitude": 173.942873,
+        "longitude": -39.115218
+      },
+      {
+        "name": "Back Beach",
+        "id": "Back_Bea_174.0_-39.1",
+        "latitude": 174.01765,
+        "longitude": -39.063875
+      },
+      {
+        "name": "Fitzroy",
+        "id": "Fitzroy_174.1_-39.0",
+        "latitude": 174.096313,
+        "longitude": -39.044107
+      },
+      {
+        "name": "Bell Black Reef",
+        "id": "Bell_Bla_174.1_-39.0",
+        "latitude": 174.145537,
+        "longitude": -39.014003
+      },
+      {
+        "name": "Waitara",
+        "id": "Waitara_174.2_-39.0",
+        "latitude": 174.2297,
+        "longitude": -38.9848
+      }
+    ],
+    "Waimakariri District": [
+      {
+        "name": "Waimairi",
+        "id": "Kairaki_172.7_-43.4",
+        "latitude": 172.716699,
+        "longitude": -43.385063
+      }
+    ],
+    "Christchurch City": [
+      {
+        "name": "Raupo Bay",
+        "id": "Raupo_Ba_173.0_-43.7",
+        "latitude": 173.04042,
+        "longitude": -43.662304
+      },
+      {
+        "name": "Hickory Bay",
+        "id": "Hickory_173.1_-43.8",
+        "latitude": 173.111143,
+        "longitude": -43.777477
+      },
+      {
+        "name": "Magnet Bay",
+        "id": "Magnet_B_172.7_-43.8",
+        "latitude": 172.739042,
+        "longitude": -43.844183
+      }
+    ],
+    "Auckland": [
+      {
+        "name": "Te Arai Beach",
+        "id": "Te_Arai_174.6_-36.2",
+        "latitude": 174.648307,
+        "longitude": -36.15831
+      },
+      {
+        "name": "Goat Island",
+        "id": "Goat_Isl_174.8_-36.3",
+        "latitude": 174.792316,
+        "longitude": -36.269755
+      },
+      {
+        "name": "Daniels Reef",
+        "id": "Daniels_174.8_-36.3",
+        "latitude": 174.803504,
+        "longitude": -36.298266
+      },
+      {
+        "name": "Omaha Beach",
+        "id": "Omaha_Be_174.8_-36.3",
+        "latitude": 174.782092,
+        "longitude": -36.339329
+      },
+      {
+        "name": "Tawharanui",
+        "id": "Tawharan_174.8_-36.4",
+        "latitude": 174.835481,
+        "longitude": -36.367981
+      },
+      {
+        "name": "Waiwera Reef",
+        "id": "Waiwera_174.7_-36.5",
+        "latitude": 174.709257,
+        "longitude": -36.545866
+      },
+      {
+        "name": "Orewa Beach",
+        "id": "Orewa_Be_174.7_-36.6",
+        "latitude": 174.698416,
+        "longitude": -36.58634
+      },
+      {
+        "name": "Red Beach",
+        "id": "Red_Beac_174.7_-36.6",
+        "latitude": 174.709428,
+        "longitude": -36.603376
+      },
+      {
+        "name": "Long Bay Reef",
+        "id": "Long_Bay_174.8_-36.7",
+        "latitude": 174.753085,
+        "longitude": -36.687796
+      },
+      {
+        "name": "Milford Reef",
+        "id": "Milford_174.8_-36.8",
+        "latitude": 174.769768,
+        "longitude": -36.767075
+      },
+      {
+        "name": "South Reef",
+        "id": "South_Re_174.8_-36.8",
+        "latitude": 174.778171,
+        "longitude": -36.784738
+      },
+      {
+        "name": "Onetangi Bay",
+        "id": "Onetangi_175.1_-36.8",
+        "latitude": 175.077411,
+        "longitude": -36.786251
+      },
+      {
+        "name": "Whangapoua - Okiwi",
+        "id": "Whangapo_175.4_-36.1",
+        "latitude": 175.434669,
+        "longitude": -36.14097
+      },
+      {
+        "name": "Awana Bay",
+        "id": "Awana_Ba_175.5_-36.2",
+        "latitude": 175.480793,
+        "longitude": -36.209185
+      },
+      {
+        "name": "Kaitoke",
+        "id": "Kaitoke_175.5_-36.2",
+        "latitude": 175.48078,
+        "longitude": -36.243077
+      },
+      {
+        "name": "Medlands-Shark Alley",
+        "id": "Medlands_175.5_-36.3",
+        "latitude": 175.492577,
+        "longitude": -36.263156
+      },
+      {
+        "name": "Kariotahi",
+        "id": "Kariotah_174.6_-37.3",
+        "latitude": 174.640911,
+        "longitude": -37.268969
+      },
+      {
+        "name": "Whatipu",
+        "id": "Whatipu_174.5_-37.1",
+        "latitude": 174.505009,
+        "longitude": -37.050651
+      },
+      {
+        "name": "Karekare",
+        "id": "Karekare_174.5_-37.0",
+        "latitude": 174.468501,
+        "longitude": -36.987947
+      },
+      {
+        "name": "Piha",
+        "id": "Piha_174.5_-37.0",
+        "latitude": 174.464161,
+        "longitude": -36.957137
+      },
+      {
+        "name": "Bethells Beach",
+        "id": "Bethells_174.4_-36.9",
+        "latitude": 174.442462,
+        "longitude": -36.897858
+      },
+      {
+        "name": "Maori Bay",
+        "id": "Maori_Ba_174.4_-36.8",
+        "latitude": 174.42358,
+        "longitude": -36.837075
+      },
+      {
+        "name": "Muriwai Beach",
+        "id": "Muriw_A_174.4_-36.8",
+        "latitude": 174.422943,
+        "longitude": -36.828681
+      },
+      {
+        "name": "Muriwai - Rimmers",
+        "id": "Muriw_B_174.3_-36.7",
+        "latitude": 174.337672,
+        "longitude": -36.709875
+      }
+    ]
+  }
+}
